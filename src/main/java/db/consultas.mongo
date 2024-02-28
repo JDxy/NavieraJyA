@@ -1,0 +1,77 @@
+// Plantea cinco consultas (enunciado y sentencia)
+
+// Obtener todos los viajes con destino a "Tenerife" y mostrar su fecha de salida y precio.
+db.Viajes.find({ Destino: "Tenerife" }, { Fecha_Salida: 1, Precio: 1, _id: 0 })
+
+// Mostrar los usuarios que son administradores.
+db.Usuarios.find({ Admin: true })
+
+// Encontrar todos los viajes con precios mayores a $100.
+db.Viajes.find({ Precio: { $gt: 100 } })
+
+// Obtener los billetes comprados para el viaje con ID "GC02" y mostrar la fecha de compra y los pasajeros.
+db.BilletesComprados.find({ "Viajes": "GC02" }, { Fecha: 1, Pasajeros: 1, _id: 0 })
+
+// Mostrar los usuarios que no son pasajeros.
+db.Usuarios.find({ Pasajero: false })
+
+
+//Agregaciones
+
+// Agregación para calcular el total de plazas disponibles por destino:
+db.Viajes.aggregate([
+  {
+    $group: {
+      _id: "$Destino",
+      Total_Plazas_Turista: { $sum: "$Plazas_Turista" },
+      Total_Plazas_Primera: { $sum: "$Plazas_Primera" }
+    }
+  }
+])
+
+// Agregación para encontrar el promedio de precios de los viajes por destino:
+db.Viajes.aggregate([
+  {
+    $group: {
+      _id: "$Destino",
+      Precio_Promedio: { $avg: "$Precio" }
+    }
+  }
+])
+
+// Actualizaciones
+
+// Actualizar el campo "Precio" del viaje con ID "TF01" a 85:
+db.Viajes.updateOne(
+  { _id: "TF01" },
+  { $set: { Precio: 85 } }
+)
+
+// Aumentar en 10 el campo "Plazas_Turista" para todos los viajes con destino "Tenerife":
+db.Viajes.updateMany(
+  { Destino: "Tenerife" },
+  { $inc: { Plazas_Turista: 10 } }
+)
+
+// Actualizar el campo "Nombre" del usuario con ID "usuario01" a "Anita":
+db.Usuarios.updateOne(
+  { _id: "usuario01" },
+  { $set: { Nombre: "Anita" } }
+)
+
+// Decrementar en 10 el campo "Plazas_Turista" para todos los viajes con procedencia "Gran Canaria" que tengan un precio mayor a 20:
+db.Viajes.updateMany(
+  { Procedencia: "Gran Canaria", Precio: { $gt: 20 } },
+  { $inc: { "Plazas_Turista": -10 } }
+)
+
+
+// Eliminaciones
+// Borrar el viaje con ID "LP01":
+db.Viajes.deleteOne({ _id: "LP01" })
+
+// Eliminar todos los viajes con destino "Tenerife" y precio mayor o igual a 90:
+db.Viajes.deleteMany({ Destino: "Tenerife", Precio: { $gte: 90 } })
+
+// Eliminar usuarios que no sean administradores.
+db.Usuarios.deleteOne({ Admin: { $eq: false } })
