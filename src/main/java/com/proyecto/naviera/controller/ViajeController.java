@@ -32,6 +32,20 @@ public class ViajeController {
         return viajeService.getViajesByDestino(destino);
     }
 
+    /*
+    * En el postman: post localhost:9010/trip/addviaje
+    --> body --> JSON     
+     * {
+    "id":"tf08",
+    "precio": 80,
+    "fecha_salida": "2023-12-22 09:00:00",
+    "fecha_llegada": "2023-12-22 11:00:00",
+    "destino": "Tenerife",
+    "procedencia": "Gran Canaria",
+    "plazas_turista": 450,
+    "plazas_primera": 69
+  }
+     */
     @PostMapping("addviaje")
     public void postRegisterViaje(@RequestBody ViajeDTO viaje) {     
         viajeService.postRegisterViaje(viaje);
