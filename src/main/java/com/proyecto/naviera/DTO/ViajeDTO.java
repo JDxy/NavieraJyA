@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class ViajeDTO {
-    private int Precio;
-    private String Fecha_Salida;
-    private String Fecha_Llegada;
-    private String Destino;
-    private String Procedencia;
-    private int Plazas_Turista;
-    private int Plazas_Primera;
+    private int precio;
+    private String fecha_Salida;
+    private String fecha_Llegada;
+    private String destino;
+    private String procedencia;
+    private int plazas_Turista;
+    private int plazas_Primera;
 }
