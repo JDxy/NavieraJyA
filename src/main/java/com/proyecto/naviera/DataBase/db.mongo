@@ -1,147 +1,147 @@
-// Conexión a la base de datos y selección de la base de datos "NavieraJ&A1"
-use NavieraJ&A
+// Conexión a la base de datos y selección de la base de datos "navieraja1"
+use navieraja
 
-// Creación de la colección "Viajes"
-db.createCollection("Viajes")
+// Creación de la colección "viajes"
+db.createCollection("viajes")
 
-// Inserción de datos en la colección "Viajes"
-db.Viajes.insertMany([
+// Inserción de datos en la colección "viajes"
+db.viajes.insertMany([
   {
-    _id: "TF01",
-    Precio: 80,
-    Fecha_Salida: "2023-12-22 09:00:00",
-    Fecha_Llegada: "2023-12-22 11:00:00",
-    Destino: "Tenerife",
-    Procedencia: "Gran Canaria",
-    Plazas_Turista: 450,
-    Plazas_Primera: 90
+    _id: "tf01",
+    precio: 80,
+    fecha_salida: "2023-12-22 09:00:00",
+    fecha_llegada: "2023-12-22 11:00:00",
+    destino: "Tenerife",
+    procedencia: "Gran Canaria",
+    plazas_turista: 450,
+    plazas_primera: 90
   },
   {
-    _id: "TF02",
-    Precio: 90,
-    Fecha_Salida: "2023-12-23 10:30:00",
-    Fecha_Llegada: "2023-12-23 12:30:00",
-    Destino: "Tenerife",
-    Procedencia: "Fuerteventura",
-    Plazas_Turista: 480,
-    Plazas_Primera: 95
+    _id: "tf02",
+    precio: 90,
+    fecha_salida: "2023-12-23 10:30:00",
+    fecha_llegada: "2023-12-23 12:30:00",
+    destino: "Tenerife",
+    procedencia: "Fuerteventura",
+    plazas_turista: 480,
+    plazas_primera: 95
   },
   {
-    _id: "FU01",
-    Precio: 110,
-    Fecha_Salida: "2023-12-24 11:00:00",
-    Fecha_Llegada: "2023-12-24 13:00:00",
-    Destino: "Fuerteventura",
-    Procedencia: "Tenerife",
-    Plazas_Turista: 520,
-    Plazas_Primera: 105
+    _id: "fu01",
+    precio: 110,
+    fecha_salida: "2023-12-24 11:00:00",
+    fecha_llegada: "2023-12-24 13:00:00",
+    destino: "Fuerteventura",
+    procedencia: "Tenerife",
+    plazas_turista: 520,
+    plazas_primera: 105
   },
   {
-    _id: "FU02",
-    Precio: 95,
-    Fecha_Salida: "2023-12-25 12:00:00",
-    Fecha_Llegada: "2023-12-25 14:00:00",
-    Destino: "Fuerteventura",
-    Procedencia: "Lanzarote",
-    Plazas_Turista: 490,
-    Plazas_Primera: 98
+    _id: "fu02",
+    precio: 95,
+    fecha_salida: "2023-12-25 12:00:00",
+    fecha_llegada: "2023-12-25 14:00:00",
+    destino: "Fuerteventura",
+    procedencia: "Lanzarote",
+    plazas_turista: 490,
+    plazas_primera: 98
   },
   {
-    _id: "LP01",
-    Precio: 150,
-    Fecha_Salida: "2023-12-26 13:00:00",
-    Fecha_Llegada: "2023-12-26 15:00:00",
-    Destino: "Lanzarote",
-    Procedencia: "Gran Canaria",
-    Plazas_Turista: 550,
-    Plazas_Primera: 110
+    _id: "lz01",
+    precio: 150,
+    fecha_salida: "2023-12-26 13:00:00",
+    fecha_llegada: "2023-12-26 15:00:00",
+    destino: "Lanzarote",
+    procedencia: "Gran Canaria",
+    plazas_turista: 550,
+    plazas_primera: 110
   },
   {
-    _id: "TF02",
-    Precio: 85,
-    Fecha_Salida: "2023-12-27 14:00:00",
-    Fecha_Llegada: "2023-12-27 16:00:00",
-    Destino: "Lanzarote",
-    Procedencia: "Tenerife",
-    Plazas_Turista: 460,
-    Plazas_Primera: 92
+    _id: "lz02",
+    precio: 85,
+    fecha_salida: "2023-12-27 14:00:00",
+    fecha_llegada: "2023-12-27 16:00:00",
+    destino: "Lanzarote",
+    procedencia: "Tenerife",
+    plazas_turista: 460,
+    plazas_primera: 92
   },
   {
-    _id: "GC02",
-    Precio: 130,
-    Fecha_Salida: "2023-12-28 15:00:00",
-    Fecha_Llegada: "2023-12-28 17:00:00",
-    Destino: "Gran Canaria",
-    Procedencia: "Fuerteventura",
-    Plazas_Turista: 510,
-    Plazas_Primera: 102
+    _id: "gc02",
+    precio: 130,
+    fecha_salida: "2023-12-28 15:00:00",
+    fecha_llegada: "2023-12-28 17:00:00",
+    destino: "Gran Canaria",
+    procedencia: "Fuerteventura",
+    plazas_turista: 510,
+    plazas_primera: 102
   },
   {
-    _id: "GC04",
-    Precio: 105,
-    Fecha_Salida: "2023-12-29 16:00:00",
-    Fecha_Llegada: "2023-12-29 18:00:00",
-    Destino: "Gran Canaria",
-    Procedencia: "Lanzarote",
-    Plazas_Turista: 490,
-    Plazas_Primera: 98
+    _id: "gc04",
+    precio: 105,
+    fecha_salida: "2023-12-29 16:00:00",
+    fecha_llegada: "2023-12-29 18:00:00",
+    destino: "Gran Canaria",
+    procedencia: "Lanzarote",
+    plazas_turista: 490,
+    plazas_primera: 98
   },
   {
-    _id: "TF03",
-    Precio: 75,
-    Fecha_Salida: "2023-12-30 17:00:00",
-    Fecha_Llegada: "2023-12-30 19:00:00",
-    Destino: "Tenerife",
-    Procedencia: "Fuerteventura",
-    Plazas_Turista: 440,
-    Plazas_Primera: 88
+    _id: "tf03",
+    precio: 75,
+    fecha_salida: "2023-12-30 17:00:00",
+    fecha_llegada: "2023-12-30 19:00:00",
+    destino: "Tenerife",
+    procedencia: "Fuerteventura",
+    plazas_turista: 440,
+    plazas_primera: 88
   },
   {
-    _id: "TF04",
-    Precio: 100,
-    Fecha_Salida: "2023-12-31 18:00:00",
-    Fecha_Llegada: "2023-12-31 20:00:00",
-    Destino: "Tenerife",
-    Procedencia: "Lanzarote",
-    Plazas_Turista: 480,
-    Plazas_Primera: 96
+    _id: "tf04",
+    precio: 100,
+    fecha_salida: "2023-12-31 18:00:00",
+    fecha_llegada: "2023-12-31 20:00:00",
+    destino: "Tenerife",
+    procedencia: "Lanzarote",
+    plazas_turista: 480,
+    plazas_primera: 96
   }
 ])
 
 
-// Creación de la colección "Usuarios"
-db.createCollection("Usuarios")
+// Creación de la colección "usuarios"
+db.createCollection("usuarios")
 
-// Inserción de datos en la colección "Usuarios"
-db.Usuarios.insertMany([
+// Inserción de datos en la colección "usuarios"
+db.usuarios.insertMany([
   {
     _id: "usuario01",
-    Nombre: "Ana",
-    Contraseña: "123",
-    Mail: "Canary7IslandAIPonceP@gmail.com",
-    Tlf: 928418775,
-    Pasajero: false,
-    Admin: true
+    nombre: "Ana",
+    contraseña: "123",
+    mail: "Canary7IslandAIPonceP@gmail.com",
+    tlf: 928418775,
+    pasajero: false,
+    admin: true
   },
   {
     _id: "usuario02",
-    Nombre: "Jose",
-    Contraseña: "123",
-    Mail: "Canary7IslandJose@gmail.com",
-    Tlf: 928418775,
-    Pasajero: true,
-    Admin: false
+    nombre: "Jose",
+    contraseña: "123",
+    mail: "Canary7IslandJose@gmail.com",
+    tlf: 928418775,
+    pasajero: true,
+    admin: false
   }
 ])
 
-// Creación de la colección "BilletesComprados"
-db.createCollection("BilletesComprados")
+// Creación de la colección "billetescomprados"
+db.createCollection("billetescomprados")
 
-// Inserción de datos en la colección "BilletesComprados"
-db.BilletesComprados.insertOne([
+// Inserción de datos en la colección "billetescomprados"
+db.billetescomprados.insertOne([
   {
-    Fecha: "2023-12-19 08:30:00",
-    Viajes: ["GC02"],
-    Pasajeros: ["usuario02"]
+    fecha: "2023-12-19 08:30:00",
+    viajes: ["gc02"],
+    pasajeros: ["usuario02"]
   }
 ])
