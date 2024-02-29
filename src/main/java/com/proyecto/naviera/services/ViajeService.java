@@ -39,6 +39,10 @@ public class ViajeService {
             viaje.setId(viajeDTO.getId());
             viajeRepository.save(viaje);
         }
-    }
+  }
+
+  public void deleteViaje(String id){
+    viajeRepository.deleteById(id);
+  }
 
 }

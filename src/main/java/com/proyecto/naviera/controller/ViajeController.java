@@ -3,6 +3,7 @@ package com.proyecto.naviera.controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +34,7 @@ public class ViajeController {
     }
 
     /*
-    * En el postman: post localhost:9010/trip/addviaje
+    * En el postman: post localhost:9001/viaje/addviaje
     --> body --> JSON     
      * {
     "id":"tf08",
@@ -50,4 +51,9 @@ public class ViajeController {
     public void postRegisterViaje(@RequestBody ViajeDTO viaje) {     
         viajeService.postRegisterViaje(viaje);
    }
+
+    @DeleteMapping("/delete:{id}")
+    public void deleteViaje(@PathVariable("id") String id){
+        viajeService.deleteViaje(id);
+    }
 }

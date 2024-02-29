@@ -53,7 +53,7 @@ public class TripService {
 
     public void deleteTrips(String nombre){
       tripRepository.deleteByNombre(nombre);
-  }
+    }
 
     public void updateTrip(String id, TripDTO tripDTO) {
       Trip trip=tripRepository.findTripById(id);
