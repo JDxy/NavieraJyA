@@ -1,40 +1,52 @@
-// Plantea cinco consultas (enunciado y sentencia)
+// Consultas:
 
 // Obtener todos los viajes con destino a "Tenerife" y mostrar su fecha de salida y precio.
-db.Viajes.find({ Destino: "Tenerife" }, { Fecha_Salida: 1, Precio: 1, _id: 0 })
+db.viajes.find({ destino: "Tenerife" }, { fecha_salida: 1, precio: 1, _id: 0 })
 
 // Mostrar los usuarios que son administradores.
-db.Usuarios.find({ Admin: true })
+db.usuarios.find({ admin: true })
 
 // Encontrar todos los viajes con precios mayores a $100.
-db.Viajes.find({ Precio: { $gt: 100 } })
+db.viajes.find({ precio: { $gt: 100 } })
 
 // Obtener los billetes comprados para el viaje con ID "GC02" y mostrar la fecha de compra y los pasajeros.
-db.BilletesComprados.find({ "Viajes": "GC02" }, { Fecha: 1, Pasajeros: 1, _id: 0 })
+db.billetesComprados.find({ "viajes": "gc02" }, { fecha: 1, pasajeros: 1, _id: 0 })
 
 // Mostrar los usuarios que no son pasajeros.
-db.Usuarios.find({ Pasajero: false })
+db.usuarios.find({ pasajero: false })
 
+// Mostrar todos los usuarios que no sean administradores ni pasajeros
+db.usuarios.find({ $nor: [{ admin: true }, { pasajero: true }] })
 
 //Agregaciones
 
-// Agregación para calcular el total de plazas disponibles por destino:
-db.Viajes.aggregate([
+// Calcular el total de plazas disponibles por destino:
+db.viajes.aggregate([
   {
     $group: {
-      _id: "$Destino",
-      Total_Plazas_Turista: { $sum: "$Plazas_Turista" },
-      Total_Plazas_Primera: { $sum: "$Plazas_Primera" }
+      _id: "$destino",
+      total_plazas_turista: { $sum: "$plazas_turista" },
+      total_plazas_primera: { $sum: "$plazas_primera" }
     }
   }
 ])
 
-// Agregación para encontrar el promedio de precios de los viajes por destino:
-db.Viajes.aggregate([
+// Encontrar el promedio de precios de los viajes por destino:
+db.viajes.aggregate([
   {
     $group: {
-      _id: "$Destino",
-      Precio_Promedio: { $avg: "$Precio" }
+      _id: "$destino",
+      precio_promedio: { $avg: "$precio" }
+    }
+  }
+])
+
+// Encontrar el número total de viajes por procedencia:
+db.viajes.aggregate([
+  {
+    $group: {
+      _id: "$procedencia",
+      totalViajes: { $sum: 1 }
     }
   }
 ])
@@ -42,36 +54,36 @@ db.Viajes.aggregate([
 // Actualizaciones
 
 // Actualizar el campo "Precio" del viaje con ID "TF01" a 85:
-db.Viajes.updateOne(
-  { _id: "TF01" },
-  { $set: { Precio: 85 } }
+db.viajes.updateOne(
+  { _id: "tf01" },
+  { $set: { precio: 85 } }
 )
 
 // Aumentar en 10 el campo "Plazas_Turista" para todos los viajes con destino "Tenerife":
-db.Viajes.updateMany(
-  { Destino: "Tenerife" },
-  { $inc: { Plazas_Turista: 10 } }
+db.viajes.updateMany(
+  { destino: "Tenerife" },
+  { $inc: { plazas_turista: 10 } }
 )
 
-// Actualizar el campo "Nombre" del usuario con ID "usuario01" a "Anita":
-db.Usuarios.updateOne(
+// Actualizar el campo "Nombre" del usuario con ID "usuario01" a "Ana Isabel":
+db.usuarios.updateOne(
   { _id: "usuario01" },
-  { $set: { Nombre: "Anita" } }
+  { $set: { nombre: "Ana Isabel" } }
 )
 
 // Decrementar en 10 el campo "Plazas_Turista" para todos los viajes con procedencia "Gran Canaria" que tengan un precio mayor a 20:
-db.Viajes.updateMany(
-  { Procedencia: "Gran Canaria", Precio: { $gt: 20 } },
-  { $inc: { "Plazas_Turista": -10 } }
+db.viajes.updateMany(
+  { procedencia: "Gran Canaria", precio: { $gt: 20 } },
+  { $inc: { "plazas_turista": -10 } }
 )
 
-
 // Eliminaciones
-// Borrar el viaje con ID "LP01":
-db.Viajes.deleteOne({ _id: "LP01" })
+
+// Borrar el viaje con ID "tf04":
+db.viajes.deleteOne({ _id: "tf04" })
 
 // Eliminar todos los viajes con destino "Tenerife" y precio mayor o igual a 90:
-db.Viajes.deleteMany({ Destino: "Tenerife", Precio: { $gte: 90 } })
+db.viajes.deleteMany({ destino: "Tenerife", precio: { $gte: 90 } })
 
-// Eliminar usuarios que no sean administradores.
-db.Usuarios.deleteOne({ Admin: { $eq: false } })
+// Eliminar usuarios que no sean administradores ni pasajeros
+db.usuarios.deleteMany({ $and: [{ admin: { $ne: true } }, { pasajero: { $ne: true } }] })
