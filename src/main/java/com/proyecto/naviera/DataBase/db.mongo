@@ -1,5 +1,5 @@
-// Conexión a la base de datos y selección de la base de datos "navieraja1"
-use navieraja
+// Conexión a la base de datos y selección de la base de datos "navierajaJ&A"
+use navierajaJ&A
 
 // Creación de la colección "viajes"
 db.createCollection("viajes")
@@ -131,6 +131,15 @@ db.usuarios.insertMany([
     tlf: 928418775,
     pasajero: true,
     admin: false
+  },
+  {
+    _id : "usuario03",
+    nombre : "Pepe",
+    contraseña : "123",
+    mail : "Canary7IslandPepe@gmail.com",
+    tlf : NumberInt(928488921),
+    pasajero : false,
+    admin : false
   }
 ])
 
