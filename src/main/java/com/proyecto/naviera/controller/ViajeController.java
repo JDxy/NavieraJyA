@@ -5,9 +5,13 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.proyecto.naviera.DTO.TripDTO;
+import com.proyecto.naviera.DTO.ViajeDTO;
 import com.proyecto.naviera.model.Viaje;
 import com.proyecto.naviera.services.ViajeService;
 
@@ -27,4 +31,23 @@ public class ViajeController {
     public ArrayList<Viaje> getViajesByDestino(@PathVariable("destino") String destino) {
         return viajeService.getViajesByDestino(destino);
     }
+
+    /*
+    * En el postman: post localhost:9010/trip/addviaje
+    --> body --> JSON     
+     * {
+    "id":"tf08",
+    "precio": 80,
+    "fecha_salida": "2023-12-22 09:00:00",
+    "fecha_llegada": "2023-12-22 11:00:00",
+    "destino": "Tenerife",
+    "procedencia": "Gran Canaria",
+    "plazas_turista": 450,
+    "plazas_primera": 69
+  }
+     */
+    @PostMapping("addviaje")
+    public void postRegisterViaje(@RequestBody ViajeDTO viaje) {     
+        viajeService.postRegisterViaje(viaje);
+   }
 }
