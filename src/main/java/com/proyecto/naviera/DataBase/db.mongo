@@ -67,7 +67,7 @@ db.viajes.insertMany([
     plazas_primera: 92
   },
   {
-    _id: "gc02",
+    _id: "gc01",
     precio: 130,
     fecha_salida: "2023-12-28 15:00:00",
     fecha_llegada: "2023-12-28 17:00:00",
@@ -77,7 +77,7 @@ db.viajes.insertMany([
     plazas_primera: 102
   },
   {
-    _id: "gc04",
+    _id: "gc02",
     precio: 105,
     fecha_salida: "2023-12-29 16:00:00",
     fecha_llegada: "2023-12-29 18:00:00",
@@ -87,21 +87,21 @@ db.viajes.insertMany([
     plazas_primera: 98
   },
   {
-    _id: "tf03",
+    _id: "gm01",
     precio: 75,
     fecha_salida: "2023-12-30 17:00:00",
     fecha_llegada: "2023-12-30 19:00:00",
-    destino: "Tenerife",
+    destino: "Gomera",
     procedencia: "Fuerteventura",
     plazas_turista: 440,
     plazas_primera: 88
   },
   {
-    _id: "tf04",
+    _id: "gm02",
     precio: 100,
     fecha_salida: "2023-12-31 18:00:00",
     fecha_llegada: "2023-12-31 20:00:00",
-    destino: "Tenerife",
+    destino: "Gomera",
     procedencia: "Lanzarote",
     plazas_turista: 480,
     plazas_primera: 96
@@ -128,7 +128,7 @@ db.usuarios.insertMany([
     nombre: "Jose",
     contraseña: "123",
     mail: "Canary7IslandJose@gmail.com",
-    tlf: 928418775,
+    tlf: 928419065,
     pasajero: true,
     admin: false
   },
@@ -136,7 +136,7 @@ db.usuarios.insertMany([
     _id : "usuario03",
     nombre : "Pepe",
     contraseña : "123",
-    mail : "Canary7IslandPepe@gmail.com",
+    mail : "pepe@gmail.com",
     tlf : NumberInt(928488921),
     pasajero : false,
     admin : false
@@ -152,5 +152,10 @@ db.billetescomprados.insertOne([
     fecha: "2023-12-19 08:30:00",
     viajes: ["gc02"],
     pasajeros: ["usuario02"]
+  },
+   {
+    fecha: "2024-02-06 10:35:00",
+    viajes: ["gm01"],
+    pasajeros: ["usuario03"]
   }
 ])
