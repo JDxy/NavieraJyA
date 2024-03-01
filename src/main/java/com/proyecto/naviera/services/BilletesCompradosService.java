@@ -8,10 +8,15 @@ import com.proyecto.naviera.repositories.BilletesCompradosRepository;
 
 @Service
 public class BilletesCompradosService {
-    @Autowired //-> es la inyeccion de dependencias
+    @Autowired
     private BilletesCompradosRepository billetesCompradosRepository;
 
     public ArrayList<BilletesComprados> getAllBilletesComprados() {
-      return billetesCompradosRepository.findAll();
+        return (ArrayList<BilletesComprados>) billetesCompradosRepository.findAll();
+    }
+
+    // Puedes agregar métodos adicionales según sea necesario, por ejemplo:
+    public ArrayList<String> findViajesByFecha(String fecha) {
+        return billetesCompradosRepository.findViajesByFecha(fecha);
     }
 }
