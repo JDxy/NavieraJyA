@@ -2,6 +2,7 @@ package com.proyecto.naviera.controller;
 
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,12 @@ public class BilletesCompradosController {
     @GetMapping("/buscar")
     public ArrayList<String> findViajesByFecha(@RequestParam String fecha) {
         return billetesCompradosService.findViajesByFecha(fecha);
+    }    
+
+    // Endpoint para eliminar billetes comprados por fecha
+    // localhost:9001/billetesComprados/eliminar?fecha=2023-12-19 08:30:00
+    @DeleteMapping("/eliminar")
+    public void deleteBilletesByFecha(@RequestParam String fecha) {
+        billetesCompradosService.deleteBilletesByFecha(fecha);
     }
-    
 }
