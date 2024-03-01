@@ -137,9 +137,27 @@ db.usuarios.insertMany([
     nombre : "Pepe",
     contraseña : "123",
     mail : "pepe@gmail.com",
-    tlf : NumberInt(928488921),
+    tlf : 928488921,
     pasajero : false,
     admin : false
+  },
+   {
+    _id: "usuario04",
+    nombre: "Lola",
+    contraseña: "978",
+    mail: "lola@gmail.com",
+    tlf: 928287565,
+    pasajero: true,
+    admin: false
+  },
+  {
+    _id: "usuario05",
+    nombre: "Luis",
+    contraseña: "785",
+    mail: "luis@gmail.com",
+    tlf: 828206931,
+    pasajero: false,
+    admin: false
   }
 ])
 
@@ -157,5 +175,15 @@ db.billetescomprados.insertOne([
     fecha: "2024-02-06 10:35:00",
     viajes: ["gm01"],
     pasajeros: ["usuario02"]
+  },
+  {
+    fecha: "2024-02-15 09:30:00",
+    viajes: ["lz02"],
+    pasajeros: ["usuario04"]
+  },
+  {
+    fecha: "2024-01-06 12:35:00",
+    viajes: ["gc01"],
+    pasajeros: ["usuario04"]
   }
 ])
