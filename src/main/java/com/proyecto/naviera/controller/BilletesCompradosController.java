@@ -19,12 +19,11 @@ public class BilletesCompradosController {
     public ArrayList<BilletesComprados> getAllBilletesComprados() {
         return billetesCompradosService.getAllBilletesComprados();
     }
-
-    // Endpoint para buscar viajes por fecha
+    
+    // localhost:9001/billetesComprados/buscar?fecha=2023-12-19 08:30:00
     @GetMapping("/buscar")
     public ArrayList<String> findViajesByFecha(@RequestParam String fecha) {
         return billetesCompradosService.findViajesByFecha(fecha);
     }
-
-    // Puedes agregar más endpoints según sea necesario
+    
 }
