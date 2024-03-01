@@ -41,6 +41,7 @@ public class ViajeController {
      * @param destino El destino de los viajes a buscar.
      * @return Lista de viajes con el destino especificado.
      */
+    // localhost:9001/viaje/destino:Tenerife
     @GetMapping("/destino:{destino}")
     public ArrayList<Viaje> getViajesByDestino(@PathVariable("destino") String destino) {
         return viajeService.getViajesByDestino(destino);
@@ -72,11 +73,6 @@ public class ViajeController {
         return viajeService.buscarViajesRangoPorPrecio(precioMinimo, precioMaximo);
     }
 
-    
-    
-
-
-
          /*
     En el postman: post localhost:9001/viaje/addviaje
     --> body --> JSON (raw)
@@ -105,17 +101,27 @@ public class ViajeController {
      * Método para eliminar un viaje.
      * @param id El ID del viaje a eliminar.
      */
+    // localhost:9001/viaje/delete:tf02
     @DeleteMapping("/delete:{id}")
     public void deleteViaje(@PathVariable("id") String id){
         viajeService.deleteViaje(id);
     }
 
-    /**
+
+    
+     // localhost:9001/viaje/nuevodestino:tf02
+     /*
+      * {
+      *  "fecha_llegada": "2023-12-23 12:30:00"
+      * }
+      *
+      */
+    @PutMapping("nuevodestino:{id}")
+        /**
      * Método para actualizar el destino de un viaje.
      * @param id El ID del viaje a actualizar.
      * @param viaje La nueva información del viaje.
      */
-    @PutMapping("nuevodestino:{id}")
     public void putViajeDestino(@PathVariable String id, @RequestBody ViajeDTO viaje) {
         viajeService.updateViajeDestino(id, viaje);
     }

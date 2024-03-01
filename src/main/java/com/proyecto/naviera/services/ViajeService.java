@@ -78,6 +78,7 @@ public class ViajeService {
     public void updateViajeDestino(String id, ViajeDTO viajeDTO) {
       Viaje viaje=viajeRepository.findViajeById(id);
       if(viaje!=null){
+        viaje.setId(viajeDTO.getId());
         viaje.setDestino(viajeDTO.getDestino());
         viajeRepository.save(viaje);
       }     
