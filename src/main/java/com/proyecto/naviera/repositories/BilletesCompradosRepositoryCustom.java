@@ -21,15 +21,33 @@ import com.proyecto.naviera.model.BilletesComprados;
 public class BilletesCompradosRepositoryCustom implements BilletesCompradosRepository {
     @Autowired
     private MongoTemplate mongoTemplate;
-
+    
+    /**
+     *  Método para encontrar los viajes asociados a una fecha específica en los billetes comprados
+     *  Se devuelve la lista de viajes encontrados
+    */
     @Override
     public ArrayList<String> findViajesByFecha(String fecha) {
+        // Se crea una consulta MongoDB para encontrar documentos donde el campo "fecha" coincida con el valor proporcionado
         Query query = new Query(Criteria.where("fecha").is(fecha));
+        // Se ejecuta la consulta en la base de datos MongoDB utilizando el mongoTemplate,
+        // luego se mapean los resultados para obtener solo los viajes y se los convierte en un flujo de datos
         ArrayList<String> viajes = (ArrayList<String>) mongoTemplate.find(query, BilletesComprados.class)
                                             .stream().map(BilletesComprados::getViajes)
                                             .flatMap(ArrayList::stream)
-                                            .collect(Collectors.toList());
+                                            .collect(Collectors.toList());       
         return viajes;
+    }
+
+    /**
+     * Método para eliminar los billetes comprados asociados a una fecha específica de la base de datos.     * 
+     * @param fecha La fecha específica para la cual se eliminarán los billetes comprados.
+     */
+    @Override
+    public void deleteByFecha(String fecha) {
+        // Se utiliza mongoTemplate para eliminar documentos de la colección "BilletesComprados"
+        // donde el campo "fecha" coincide con el valor proporcionado.
+        mongoTemplate.remove(new Query(Criteria.where("fecha").is(fecha)), BilletesComprados.class);
     }
 
     @Override
