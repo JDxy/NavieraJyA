@@ -69,7 +69,8 @@ public class ViajeController {
         viajeService.deleteViaje(id);
     }
 
-    @PutMapping("nuevodestino/{id}")
+    
+    @PutMapping("nuevodestino:{id}")
     public void putViajeDestino(@PathVariable String id, @RequestBody ViajeDTO viaje) {
         viajeService.updateViajeDestino(id, viaje);
     }
