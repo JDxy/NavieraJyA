@@ -13,7 +13,7 @@ import com.proyecto.naviera.repositories.ViajeRepository;
 @Service
 public class ViajeService {
   
-       @Autowired //-> es la inyeccion de dependencias
+    @Autowired //-> es la inyeccion de dependencias
     private ViajeRepository viajeRepository;
 
     public ArrayList<Viaje> getAllViajes() {
