@@ -1,14 +1,10 @@
 package com.proyecto.naviera.services;
 
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.proyecto.naviera.model.Usuario;
 import com.proyecto.naviera.repositories.UsuarioRepository;
-
-
 
 @Service
 public class UsuarioService {
@@ -18,4 +14,8 @@ public class UsuarioService {
     public ArrayList<Usuario> getAllUsuarios() {
       return usuarioRepository.findAll();
     }
+
+    public ArrayList<Usuario> getUsuariosBymail(String mail) {
+      return usuarioRepository.findBymail(mail); 
+    }  
 }

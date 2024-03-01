@@ -1,7 +1,6 @@
 package com.proyecto.naviera.services;
 
 import java.util.ArrayList;
-
 import com.proyecto.naviera.repositories.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

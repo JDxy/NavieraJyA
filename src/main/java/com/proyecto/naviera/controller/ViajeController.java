@@ -1,7 +1,6 @@
 package com.proyecto.naviera.controller;
 
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.proyecto.naviera.DTO.ViajeDTO;
 import com.proyecto.naviera.model.Viaje;
 import com.proyecto.naviera.services.ViajeService;
@@ -26,7 +24,7 @@ public class ViajeController {
 
     @GetMapping()
     public ArrayList<Viaje> getAllViajes(){
-            return viajeService.getAllViajes();
+        return viajeService.getAllViajes();
     }
 
     @GetMapping("/destino:{destino}")
@@ -48,9 +46,9 @@ public class ViajeController {
     */
 
     /*
-    * En el postman: post localhost:9001/viaje/addviaje
-    --> body --> JSON     
-     * {
+    En el postman: post localhost:9001/viaje/addviaje
+    --> body --> JSON (raw)
+    {
     "id":"tf08",
     "precio": 80,
     "fecha_salida": "2023-12-22 09:00:00",
@@ -59,12 +57,12 @@ public class ViajeController {
     "procedencia": "Gran Canaria",
     "plazas_turista": 450,
     "plazas_primera": 69
-  }
-     */
+    }
+    */
     @PostMapping("addviaje")
     public void postRegisterViaje(@RequestBody ViajeDTO viaje) {     
         viajeService.postRegisterViaje(viaje);
-   }
+    }
 
     @DeleteMapping("/delete:{id}")
     public void deleteViaje(@PathVariable("id") String id){

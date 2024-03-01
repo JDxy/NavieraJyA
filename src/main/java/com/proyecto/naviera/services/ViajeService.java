@@ -1,14 +1,11 @@
 package com.proyecto.naviera.services;
 
 import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.proyecto.naviera.DTO.ViajeDTO;
 import com.proyecto.naviera.model.Viaje;
 import com.proyecto.naviera.repositories.ViajeRepository;
-
 
 @Service
 public class ViajeService {
@@ -28,9 +25,8 @@ public class ViajeService {
       return viajeRepository.findByProcedencia(procedencia);
     }
 
-  public void postRegisterViaje(ViajeDTO viajeDTO) {
+    public void postRegisterViaje(ViajeDTO viajeDTO) {
         Viaje viaje = new Viaje();
-
         if (viajeDTO.getProcedencia() != null && viajeDTO.getDestino() != null) {
             viaje.setPrecio(viajeDTO.getPrecio());
             viaje.setFecha_salida(viajeDTO.getFecha_salida());
@@ -42,18 +38,18 @@ public class ViajeService {
             viaje.setId(viajeDTO.getId());
             viajeRepository.save(viaje);
         }
-  }
+    }
 
-  public void deleteViaje(String id){
-    viajeRepository.deleteById(id);
-  }
+    public void deleteViaje(String id){
+      viajeRepository.deleteById(id);
+    }
 
-  public void updateViajeDestino(String id, ViajeDTO viajeDTO) {
-    Viaje viaje=viajeRepository.findViajeById(id);
-    if(viaje!=null){
-      viaje.setDestino(viajeDTO.getDestino());
-      viajeRepository.save(viaje);
-    }     
-  }
+    public void updateViajeDestino(String id, ViajeDTO viajeDTO) {
+      Viaje viaje=viajeRepository.findViajeById(id);
+      if(viaje!=null){
+        viaje.setDestino(viajeDTO.getDestino());
+        viajeRepository.save(viaje);
+      }     
+    }
 
 }
