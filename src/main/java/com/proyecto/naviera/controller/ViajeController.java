@@ -109,20 +109,20 @@ public class ViajeController {
 
 
     
-     // localhost:9001/viaje/nuevodestino:tf02
+     // localhost:9001/viaje/nuevafechallegada:tf02
      /*
       * {
-      *  "fecha_llegada": "2023-12-23 12:30:00"
+      *  "fecha_llegada": "2023-12-31 12:30:00"
       * }
       *
       */
-    @PutMapping("nuevodestino:{id}")
+    @PutMapping("nuevafechallegada:{id}")
         /**
-     * Método para actualizar el destino de un viaje.
+     * Método para actualizar la fecha de llegada de un viaje.
      * @param id El ID del viaje a actualizar.
      * @param viaje La nueva información del viaje.
      */
-    public void putViajeDestino(@PathVariable String id, @RequestBody ViajeDTO viaje) {
-        viajeService.updateViajeDestino(id, viaje);
+    public void putViajeFechaLlegada(@PathVariable String id, @RequestBody ViajeDTO viaje) {
+        viajeService.updateViajeFechaLlegada(id, viaje);
     }
 }

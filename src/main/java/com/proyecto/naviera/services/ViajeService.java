@@ -71,15 +71,14 @@ public class ViajeService {
     }
 
     /**
-     * Actualiza el destino de un viaje.
+     * Actualiza la fecha de llegada de un viaje.
      * @param id El ID del viaje a actualizar.
      * @param viajeDTO La nueva información del viaje.
      */
-    public void updateViajeDestino(String id, ViajeDTO viajeDTO) {
+    public void updateViajeFechaLlegada(String id, ViajeDTO viajeDTO) {
       Viaje viaje=viajeRepository.findViajeById(id);
       if(viaje!=null){
-        viaje.setId(viajeDTO.getId());
-        viaje.setDestino(viajeDTO.getDestino());
+        viaje.setFecha_llegada(viaje.getFecha_llegada());;
         viajeRepository.save(viaje);
       }     
     }
