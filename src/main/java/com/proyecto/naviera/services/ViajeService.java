@@ -52,4 +52,8 @@ public class ViajeService {
       }     
     }
 
+    public ArrayList<Viaje> buscarViajesRangoPorPrecio(int precioMinimo, int precioMaximo) {
+      return viajeRepository.findByPrecioBetween(precioMinimo, precioMaximo);
+    }
+
 }

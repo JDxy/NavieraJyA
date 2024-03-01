@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.proyecto.naviera.DTO.UsuarioDTO;
 import com.proyecto.naviera.DTO.ViajeDTO;
 import com.proyecto.naviera.model.Usuario;
+import com.proyecto.naviera.model.Viaje;
 import com.proyecto.naviera.services.UsuarioService;
 
 @RestController
@@ -33,6 +34,8 @@ public class UsuarioController {
         return usuarioService.getUsuariosBymail(mail);
     }  
 
+
+    
     /* 
     localhost:9001/usuario/addusuario:usuario04
     {
@@ -66,4 +69,10 @@ public class UsuarioController {
     public void putUsuarioNombre(@PathVariable String id, @RequestBody UsuarioDTO usuario) {
         usuarioService.updateUsuarioNombre(id, usuario);
     }
+
+    @GetMapping("/pasajeros")
+    public ArrayList<Usuario> getUsuariosPasajeros() {
+        return usuarioService.getUsuariosPasajeros();
+    }
+    
 }

@@ -37,13 +37,14 @@ public class ViajeController {
     public ArrayList<Viaje> getViajesByProcedencia(@RequestParam(name = "procedencia", required = false, defaultValue = "Tenerife") String procedencia) {
         return viajeService.getViajesByProcedencia(procedencia);
     }
-    
-    /* 
-    @GetMapping("/destino2:{destino}")
-    public ArrayList<Viaje> getViajesByDestino2(@RequestParam(name = "destino", required = false, defaultValue = "Tenerife") String destino) {
-        return viajeService.getViajesByDestino(destino);
+
+    //localhost:9001/viaje/buscarPorRangoPrecio?precioMinimo=70&precioMaximo=100
+    @GetMapping("/buscarPorRangoPrecio")
+    public ArrayList<Viaje> buscarViajesRangoPorPrecio(
+            @RequestParam(name = "precioMinimo", required = true) int precioMinimo,
+            @RequestParam(name = "precioMaximo", required = true) int precioMaximo) {
+        return viajeService.buscarViajesRangoPorPrecio(precioMinimo, precioMaximo);
     }
-    */
 
     /*
     En el postman: post localhost:9001/viaje/addviaje

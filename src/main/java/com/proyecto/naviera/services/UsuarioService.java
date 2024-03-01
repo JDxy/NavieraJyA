@@ -48,4 +48,9 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
       }     
     }
+
+    public ArrayList<Usuario> getUsuariosPasajeros() {
+      return usuarioRepository.findByPasajero(true);
+  }
+  
 }

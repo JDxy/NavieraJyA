@@ -11,4 +11,5 @@ public interface ViajeRepository extends MongoRepository<Viaje,String>{
         public abstract Viaje save(Viaje viaje);
         public abstract void deleteById(String id);   
         public abstract Viaje findViajeById(String id);
+        public abstract ArrayList<Viaje> findByPrecioBetween(int precioMinimo, int precioMaximo);
 }
