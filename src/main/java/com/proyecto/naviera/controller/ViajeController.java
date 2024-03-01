@@ -15,6 +15,10 @@ import com.proyecto.naviera.DTO.ViajeDTO;
 import com.proyecto.naviera.model.Viaje;
 import com.proyecto.naviera.services.ViajeService;
 
+
+/**
+ * Controlador para la gestión de viajes.
+ */
 @RestController
 @RequestMapping("/viaje")
 public class ViajeController {
@@ -22,22 +26,44 @@ public class ViajeController {
     @Autowired
     private ViajeService viajeService;
 
+    /**
+     * Método para obtener todos los viajes.
+     * @return Lista de todos los viajes.
+     */
     @GetMapping()
     public ArrayList<Viaje> getAllViajes(){
         return viajeService.getAllViajes();
     }
 
+
+    /**
+     * Método para obtener los viajes por destino.
+     * @param destino El destino de los viajes a buscar.
+     * @return Lista de viajes con el destino especificado.
+     */
     @GetMapping("/destino:{destino}")
     public ArrayList<Viaje> getViajesByDestino(@PathVariable("destino") String destino) {
         return viajeService.getViajesByDestino(destino);
     }
 
+
+    /**
+     * Método para obtener los viajes por procedencia.
+     * @param procedencia La procedencia de los viajes a buscar.
+     * @return Lista de viajes con la procedencia especificada.
+     */
     // localhost:9001/viaje/procedencia?procedencia=Fuerteventura
     @GetMapping("/procedencia")
     public ArrayList<Viaje> getViajesByProcedencia(@RequestParam(name = "procedencia", required = false, defaultValue = "Tenerife") String procedencia) {
         return viajeService.getViajesByProcedencia(procedencia);
     }
 
+    /**
+     * Método para buscar viajes en un rango de precios.
+     * @param precioMinimo Precio mínimo del rango.
+     * @param precioMaximo Precio máximo del rango.
+     * @return Lista de viajes en el rango de precios especificado.
+     */
     //localhost:9001/viaje/buscarPorRangoPrecio?precioMinimo=70&precioMaximo=100
     @GetMapping("/buscarPorRangoPrecio")
     public ArrayList<Viaje> buscarViajesRangoPorPrecio(
@@ -46,7 +72,12 @@ public class ViajeController {
         return viajeService.buscarViajesRangoPorPrecio(precioMinimo, precioMaximo);
     }
 
-    /*
+    
+    
+
+
+
+         /*
     En el postman: post localhost:9001/viaje/addviaje
     --> body --> JSON (raw)
     {
@@ -61,16 +92,29 @@ public class ViajeController {
     }
     */
     @PostMapping("addviaje")
+    /**
+     * Método para registrar un nuevo viaje.
+     * @param viaje La información del nuevo viaje.
+     */
     public void postRegisterViaje(@RequestBody ViajeDTO viaje) {     
         viajeService.postRegisterViaje(viaje);
     }
+    
 
+    /**
+     * Método para eliminar un viaje.
+     * @param id El ID del viaje a eliminar.
+     */
     @DeleteMapping("/delete:{id}")
     public void deleteViaje(@PathVariable("id") String id){
         viajeService.deleteViaje(id);
     }
 
-    
+    /**
+     * Método para actualizar el destino de un viaje.
+     * @param id El ID del viaje a actualizar.
+     * @param viaje La nueva información del viaje.
+     */
     @PutMapping("nuevodestino:{id}")
     public void putViajeDestino(@PathVariable String id, @RequestBody ViajeDTO viaje) {
         viajeService.updateViajeDestino(id, viaje);
