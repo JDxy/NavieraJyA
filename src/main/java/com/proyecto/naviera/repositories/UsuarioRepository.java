@@ -1,8 +1,6 @@
 package com.proyecto.naviera.repositories;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 import com.proyecto.naviera.model.Usuario;
 
