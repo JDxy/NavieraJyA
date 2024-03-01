@@ -5,15 +5,14 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proyecto.naviera.DTO.TripDTO;
 import com.proyecto.naviera.DTO.ViajeDTO;
-import com.proyecto.naviera.model.Trip;
 import com.proyecto.naviera.model.Viaje;
 import com.proyecto.naviera.repositories.ViajeRepository;
 
 
 @Service
 public class ViajeService {
+  
        @Autowired //-> es la inyeccion de dependencias
     private ViajeRepository viajeRepository;
 
@@ -23,6 +22,10 @@ public class ViajeService {
 
     public ArrayList<Viaje> getViajesByDestino(String destino) {
       return viajeRepository.findByDestino(destino);
+    }
+
+    public ArrayList<Viaje> getViajesByProcedencia(String procedencia) {
+      return viajeRepository.findByProcedencia(procedencia);
     }
 
   public void postRegisterViaje(ViajeDTO viajeDTO) {
@@ -43,6 +46,14 @@ public class ViajeService {
 
   public void deleteViaje(String id){
     viajeRepository.deleteById(id);
+  }
+
+  public void updateViajeDestino(String id, ViajeDTO viajeDTO) {
+    Viaje viaje=viajeRepository.findViajeById(id);
+    if(viaje!=null){
+      viaje.setDestino(viajeDTO.getDestino());
+      viajeRepository.save(viaje);
+    }     
   }
 
 }
